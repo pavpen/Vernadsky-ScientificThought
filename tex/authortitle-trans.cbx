@@ -1,0 +1,74 @@
+\ProvidesFile{authortitle-trans.cbx}[authortitle-trans.cbx,v 0.0c 2012/07/10 Pavel Penev alpha$]
+
+\RequireCitationStyle{verbose}
+%\RequireCitationStyle{authortitle}
+%\RequireCitationStyle{numeric-comp}
+
+
+\DeclareFieldFormat{inbooktitle}{ \bibstring{in} \mkbibemph{#1}}
+
+\DeclareFieldFormat{titletrans}{ (\mkbibemph{#1})}
+
+% Cite a work by its author and title (e.g. for use in a sentence):
+\DeclareCiteCommand{\atcite}
+  {\usebibmacro{prenote}}
+  {\printtext[bibhyperref]{\printnames[first-last]{labelname}, %
+   \printfield[citetitle]{title}%
+   \printfield[inbooktitle]{booktitle}%
+   \printfield[titletrans]{usera}}%
+  }
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+% Cite a work by its title (e.g. for use in a sentence):
+\DeclareCiteCommand{\btcite}
+  {\usebibmacro{prenote}}
+  {\printtext[bibhyperref]{%
+   \iffieldundef{booktitle}{%
+     \printfield[citetitle]{title}%
+   }{%
+     \printfield[citetitle]{booktitle}%
+   }%
+   \printfield[titletrans]{usera}}%
+  }
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+% Cite a work by its title as an object (e.g. for use in a sentence):
+\DeclareCiteCommand{\tciteo}
+  {\usebibmacro{prenote}}
+  {\printtext[bibhyperref]{%
+   \iffieldundef{booktitle}{%
+     \printfield[citetitle]{title}%
+     \printfield[titletrans]{userb}%
+   }{%
+     \iffieldundef{title}{%
+       \iffieldundef{shorttitle}{%
+         \printfield[citetitle]{booktitle}%
+         \printfield[titletrans]{usera}%
+       }{%
+         \printfield[citetitle]{shorttitle}%
+         \printfield[titletrans]{userc}%
+         { entry }%
+         \printfield[inbooktitle]{booktitle}%
+         \printfield[titletrans]{usera}%
+       }%
+     }{%
+       \iffieldundef{shorttitle}{%
+         \printfield[citetitle]{title}%
+         \printfield[titletrans]{userb}%
+       }{%
+         \printfield[citetitle]{shorttitle}%
+         \printfield[titletrans]{userc}%
+       }%
+       { entry }%
+       \printfield[inbooktitle]{booktitle}%
+       \printfield[titletrans]{usera}%
+     }%
+   }%
+   }%
+  }
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\endinput

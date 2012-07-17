@@ -1,0 +1,114 @@
+\documentclass[twocolumn]{book}
+
+\usepackage{etex} % Load this first.
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{luainputenc}
+\usepackage{csquotes}
+\usepackage[russian,french,german,english]{babel}
+\usepackage{bigfoot} % install {ncctools} and {bigfoot}
+
+% Font configuration:
+%\usepackage[sc]{mathpazo}
+%\linespread{1.05}  % line spacing for Palatino.
+%\usepackage[scaled=0.95]{helvet}
+%\usepackage{courier}
+
+\usepackage[backend=biber,sortlocale=ru,bibencoding=utf8,citestyle=authortitle-trans]{biblatex}
+%\usepackage{multicol} % We use up all of TeX's counters with this package.
+
+\usepackage{tocloft}
+
+
+%\usepackage[pdftex,colorlinks=true]{hyperref} % Load last.
+% Add option 'draft' when debugging hyper-links accross page breaks:
+\usepackage[colorlinks=true,pdfencoding=auto]{hyperref}
+
+
+% Load bibliography databases:
+\addbibresource{thought.bib}
+
+
+
+% Typeset titles of works:
+\newcommand{\rtitle}[1]{\emph{#1}}
+
+% Typeset (e.g.) Latin phrases:
+\newcommand{\lphr}[1]{\textsf{\emph{#1}}}
+
+% Typeset chapters with by-line-type subtitles:
+\newcommand{\ChapterByLine}[2]{\chapter[#1]{#1\\[1ex]\sc\large #2}}
+
+% Typeset chapters:
+\newcommand{\Chapter}[1]{%
+	\refstepcounter{chapter}%
+	\chapter*{Chapter \thechapter%
+	  \begin{center}%
+	    \rule{0.5\linewidth}{0.1mm}\\
+	    \it\large #1\\[-1ex]%
+	    \rule{0.25\linewidth}{0.1mm}
+	  \end{center}%
+	}%
+	\chaptermark{}%
+	\addcontentsline{toc}{chapter}{Chapter \thechapter}%
+	\cftchapterprecistoc{#1}%
+}
+
+
+%%
+% Footnotes:
+\DeclareNewFootnote{default} % Author's footnotes.
+\DeclareNewFootnote{Ed}[fnsymbol] % The editor's footnotes.
+\DeclareNewFootnote{Transl}[Roman] % Our (translator's) footnotes.
+\MakePerPage{footnoteTransl}
+\newcommand{\footnoteRus}[1]{%
+	\footnoteTransl{%
+	  \begin{otherlanguage}{russian}%
+	    #1%
+	  \end{otherlanguage}%
+	}}
+
+% Use when running pdflatex to generate the font cache, instead of the above
+% (when avoiding running out ouf TeX counters by disabling <bigfoot>):
+%\newcommand{\footnoteEd}[1]{\footnote{#1}}
+%\newcommand{\footnoteTransl}[1]{\footnote{#1}}
+%\newcommand{\footnotemarkTransl}{\footnotemark}
+%\newcommand{\footnotetextTransl}{\footnotetext}
+
+
+\title{Scientific Thought as a Planetary Phenomenon}
+\author{Vladimir Ivanovich Vernadsky \and In translation by the LaRouche Movement.}
+
+
+\begin{document}
+
+\selectlanguage{english}
+
+\frontmatter
+
+\include{titlepages}
+\tableofcontents
+\include{foreword-mingaleev}
+\include{foreword-yanshin}
+
+
+\mainmatter
+
+\include{chapter-01}
+\include{chapter-02}
+\include{chapter-03}
+\include{chapter-04}
+\include{chapter-05}
+\include{chapter-06}
+\include{chapter-07}
+\include{chapter-08}
+\include{chapter-09}
+\include{chapter-10}
+
+
+\backmatter
+
+\printbibliography
+
+\end{document}
