@@ -19,6 +19,7 @@
 %\usepackage{multicol} % We use up all of TeX's counters with this package.
 
 \usepackage{tocloft}
+%\usepackage[nottoc,numbib]{tocbibind} % This didn't seem to work.
 
 
 %\usepackage[pdftex,colorlinks=true]{hyperref} % Load last.
@@ -88,6 +89,12 @@
 \frontmatter
 
 \include{titlepages}
+
+% Add the table of contents to the PDF bookmarks:
+\cleardoublepage
+\phantomsection
+\pdfbookmark[0]{\contentsname}{toc}
+
 \tableofcontents
 \include{foreword-mingaleev}
 \include{foreword-yanshin}
@@ -108,6 +115,11 @@
 
 
 \backmatter
+
+% Add the bibliography to the table of contents:
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
 
 \printbibliography
 
