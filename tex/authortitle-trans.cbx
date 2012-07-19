@@ -4,6 +4,15 @@
 %\RequireCitationStyle{authortitle}
 %\RequireCitationStyle{numeric-comp}
 
+% Usage of user fields for translations of a work's elements in the document's
+% main language (e.g. the English translation of a German book's title when
+% writing a document in English):
+%
+% usera: Translation of <booktitle> / <journal>.
+% userb: Translation of <title>.
+% userc: Translation of <shorttitle>.
+% userd: Translation of <maintitle>.
+
 
 \DeclareFieldFormat{inbooktitle}{ \bibstring{in} \mkbibemph{#1}}
 
@@ -65,6 +74,32 @@
        \printfield[inbooktitle]{booktitle}%
        \printfield[titletrans]{usera}%
      }%
+   }%
+   }%
+  }
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+% Cite a work's containing publication by its title as an object:
+\DeclareCiteCommand{\ctciteo}
+  {\usebibmacro{prenote}}
+  {\printtext[bibhyperref]{%
+   \iffieldundef{booktitle}{%
+     \iffieldundef{journaltitle}{%
+       \iffieldundef{maintitle}{%
+         \printfield[citetitle]{title}%
+         \printfield[titletrans]{userb}%
+       }{%
+         \printfield[citetitle]{maintitle}%
+	 \printfield[titletrans]{userd}%
+       }%
+     }{%
+       \printfield[citetitle]{journaltitle}%
+       \printfield[titletrans]{usera}%
+     }%
+   }{%
+     \printfield[citetitle]{booktitle}%
+     \printfield[titletrans]{usera}%
    }%
    }%
   }
