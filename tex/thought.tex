@@ -1,6 +1,7 @@
 \documentclass[twocolumn]{book}
 
 \usepackage{etex} % Load this first.
+\usepackage{etoolbox}
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage[T2A]{fontenc}
@@ -24,11 +25,17 @@
 
 %\usepackage[pdftex,colorlinks=true]{hyperref} % Load last.
 % Add option 'draft' when debugging hyper-links accross page breaks:
-\usepackage[colorlinks=true,pdfencoding=auto]{hyperref}
+\usepackage[colorlinks=true,pdfencoding=auto,linktoc=all]{hyperref}
 
 
 % Load bibliography databases:
 \addbibresource{thought.bib}
+
+
+
+%%
+% Utility macros:
+\def\eattoken#1{}
 
 
 
@@ -56,6 +63,24 @@
 	\cftchapterprecistoc{#1}%
 }
 
+% Start a new section:
+\newcounter{Section}  % A counter that doesn't reset every chapter.
+
+\newcommand{\Section}{%
+	\ifnumless{\value{section}}{1}{%
+	}{%
+	  \bigskip%
+	}%
+	\stepcounter{section}%
+	\refstepcounter{Section}%
+	\textbf{§\arabic{Section}. }%
+}
+
+% We use \eattoken to consume the space that hyperref inserts between
+% \*autorefname and the reference number:
+\def\Sectionautorefname{§\eattoken}
+%\def\theHSection{\arabic{Section}}
+
 
 %%
 % Footnotes:
@@ -76,6 +101,7 @@
 %\newcommand{\footnoteTransl}[1]{\footnote{#1}}
 %\newcommand{\footnotemarkTransl}{\footnotemark}
 %\newcommand{\footnotetextTransl}{\footnotetext}
+
 
 
 \title{Scientific Thought as a Planetary Phenomenon}

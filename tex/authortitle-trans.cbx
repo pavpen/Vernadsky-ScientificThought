@@ -18,6 +18,17 @@
 
 \DeclareFieldFormat{titletrans}{ (\mkbibemph{#1})}
 
+
+\newcommand{\printtitlefield}[2][citetitle]{%
+  \iffieldundef{hyphenation}{% 
+    \printfield[#1]{#2}%
+  }{%
+    \foreignlanguage{\thefield{hyphenation}}{%
+      \printfield[#1]{#2}%
+    }%
+  }%
+}
+
 % Cite a work by its author and title (e.g. for use in a sentence):
 \DeclareCiteCommand{\atcite}
   {\usebibmacro{prenote}}
@@ -34,9 +45,11 @@
   {\usebibmacro{prenote}}
   {\printtext[bibhyperref]{%
    \iffieldundef{booktitle}{%
-     \printfield[citetitle]{title}%
+     %\printfield[citetitle]{title}%
+     \printtitlefield{title}%
    }{%
-     \printfield[citetitle]{booktitle}%
+     %\printfield[citetitle]{booktitle}%
+     \printtitlefield{booktitle}%
    }%
    \printfield[titletrans]{usera}}%
   }
@@ -48,15 +61,15 @@
   {\usebibmacro{prenote}}
   {\printtext[bibhyperref]{%
    \iffieldundef{booktitle}{%
-     \printfield[citetitle]{title}%
+     \printtitlefield{title}%
      \printfield[titletrans]{userb}%
    }{%
      \iffieldundef{title}{%
        \iffieldundef{shorttitle}{%
-         \printfield[citetitle]{booktitle}%
+         \printtitlefield{booktitle}%
          \printfield[titletrans]{usera}%
        }{%
-         \printfield[citetitle]{shorttitle}%
+         \printtitlefield{shorttitle}%
          \printfield[titletrans]{userc}%
          { entry }%
          \printfield[inbooktitle]{booktitle}%
@@ -64,14 +77,14 @@
        }%
      }{%
        \iffieldundef{shorttitle}{%
-         \printfield[citetitle]{title}%
+         \printtitlefield{title}%
          \printfield[titletrans]{userb}%
        }{%
-         \printfield[citetitle]{shorttitle}%
+         \printtitlefield{shorttitle}
          \printfield[titletrans]{userc}%
        }%
        { entry }%
-       \printfield[inbooktitle]{booktitle}%
+       \printtitlefield[inbooktitle]{booktitle}%
        \printfield[titletrans]{usera}%
      }%
    }%
@@ -87,18 +100,18 @@
    \iffieldundef{booktitle}{%
      \iffieldundef{journaltitle}{%
        \iffieldundef{maintitle}{%
-         \printfield[citetitle]{title}%
+	 \printtitlefield{title}%
          \printfield[titletrans]{userb}%
        }{%
-         \printfield[citetitle]{maintitle}%
+	 \printtitlefield{maintitle}%
 	 \printfield[titletrans]{userd}%
        }%
      }{%
-       \printfield[citetitle]{journaltitle}%
+       \printtitlefield{journaltitle}%
        \printfield[titletrans]{usera}%
      }%
    }{%
-     \printfield[citetitle]{booktitle}%
+     \printtitlefield{booktitle}%
      \printfield[titletrans]{usera}%
    }%
    }%
