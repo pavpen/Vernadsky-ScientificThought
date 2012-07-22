@@ -29,7 +29,8 @@
 
 
 % Load bibliography databases:
-\addbibresource{thought.bib}
+\addbibresource{bib/vernadsky.bib}
+\addbibresource{bib/thought.bib}
 
 
 
@@ -38,6 +39,15 @@
 \def\eattoken#1{}
 
 
+
+%%
+% Typesetting macros:
+
+% Typeset 'e.g.':
+\newcommand{\eg}{e.$\,$g.}
+
+% Typeset 'i.e.':
+\newcommand{\ie}{i.$\,$e.}
 
 % Typeset titles of works:
 \newcommand{\rtitle}[1]{\emph{#1}}
@@ -145,7 +155,7 @@
 % Add the bibliography to the table of contents:
 \cleardoublepage
 \phantomsection
-\addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{part}{Bibliography}
 
 \printbibliography
 

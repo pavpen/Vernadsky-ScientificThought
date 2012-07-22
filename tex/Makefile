@@ -8,7 +8,7 @@ all: $(NAME).pdf
 re: clean
 	$(MAKE) all
 
-$(NAME).pdf: *.tex thought.bib *.cbx
+$(NAME).pdf: *.tex bib/*.bib *.cbx
 	latexmk $(LATEXMK_OPTS) $(NAME)
 
 clean:
