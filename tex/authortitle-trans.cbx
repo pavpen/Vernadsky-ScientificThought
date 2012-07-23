@@ -71,7 +71,7 @@
        }{%
          \printtitlefield{shorttitle}%
          \printfield[titletrans]{userc}%
-         { entry }%
+         \space entry%
          \printfield[inbooktitle]{booktitle}%
          \printfield[titletrans]{usera}%
        }%
@@ -83,7 +83,7 @@
          \printtitlefield{shorttitle}
          \printfield[titletrans]{userc}%
        }%
-       { entry }%
+       \space entry%
        \printtitlefield[inbooktitle]{booktitle}%
        \printfield[titletrans]{usera}%
      }%
@@ -118,5 +118,101 @@
   }
   {\multicitedelim}
   {\usebibmacro{postnote}}
+
+
+% Short (reference) citations (i.e. numeric):
+%
+% Code adapted from <texmf-site/tex/latex/biblatex/cbx/numeric-verb.cbx>:
+
+\ExecuteBibliographyOptions{labelnumber}
+\newcommand*{\refmulticitedelim}{\addcomma\space}
+\providebool{bbx:subentry}
+\DeclareFieldFormat{entrysetcount}{\mknumalph{#1}}
+
+\newbibmacro*{refc:cite}{%
+  \printtext[bibhyperref]{%
+    \printfield{prefixnumber}%
+    \printfield{labelnumber}%
+    \ifbool{bbx:subentry}
+      {\printfield{entrysetcount}}
+      {}}}
+
+\newbibmacro*{refc:textcite}{%
+  \ifnameundef{labelname}
+    {\printfield[citetitle]{labeltitle}}
+    {\printnames{labelname}}%
+  \addspace\bibopenbracket
+  \ifnumequal{\value{citecount}}{1}
+    {\usebibmacro{prenote}}
+    {}%
+  \usebibmacro{refc:cite}}
+
+
+\DeclareCiteCommand{\refcite}
+  {\bibopenbracket
+   \usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \ifnumgreater{\value{citecount}}{1}
+     {\bibopenbracket}
+     {}%
+   \usebibmacro{refc:cite}}
+  {\bibclosebracket\refmulticitedelim}
+  {\usebibmacro{postnote}%
+   \bibclosebracket}
+
+\DeclareCiteCommand{\refparencite}[\mkbibbrackets]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{refc:cite}}
+  {\refmulticitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\reffootcite}[\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{refc:cite}}
+  {\refmulticitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\reffootcitetext}[\mkbibfootnotetext]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{refc:cite}}
+  {\refmulticitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\refsmartcite}[\iffootnote\mkbibbrackets\mkbibfootnote]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{refc:cite}}
+  {\refmulticitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\reftextcite}
+  {}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{refc:textcite}}
+  {\bibclosebracket\refmulticitedelim}
+  {\usebibmacro{postnote}%
+   \bibclosebracket}
+
+\DeclareCiteCommand{\supercite}[\mkbibsuperscript]
+  {\iffieldundef{prenote}
+     {}
+     {\BibliographyWarning{Ignoring prenote argument}}%
+   \iffieldundef{postnote}
+     {}
+     {\BibliographyWarning{Ignoring postnote argument}}}
+  {\usebibmacro{citeindex}%
+   \usebibmacro{refc:cite}}
+  {\supercitedelim}
+  {}
+
+\DeclareMultiCiteCommand{\refcites}[\mkbibbrackets]{\refcite}{\refmulticitedelim}
+\DeclareMultiCiteCommand{\refparencites}[\mkbibbrackets]{\refparencite}{\refmulticitedelim}
+\DeclareMultiCiteCommand{\refsmartcites}[\iffootnote\mkbibbrackets\mkbibfootnote]{\refsmartcite}{\refmulticitedelim}
+
+
+
 
 \endinput
