@@ -25,7 +25,7 @@
 
 %\usepackage[pdftex,colorlinks=true]{hyperref} % Load last.
 % Add option 'draft' when debugging hyper-links accross page breaks:
-\usepackage[colorlinks=true,pdfencoding=auto,linktoc=all]{hyperref}
+\usepackage[colorlinks=true,pdfencoding=auto,linktoc=all,draft]{hyperref}
 
 
 % Load bibliography databases:
@@ -96,16 +96,23 @@
 
 %%
 % Footnotes:
+% Add a comma between the footnote marks:
+\newcommand{\fncomma}{${\rule{-1pt}{0pt}}^{,\,}$}
 \DeclareNewFootnote{default} % Author's footnotes.
 \DeclareNewFootnote{Ed}[fnsymbol] % The editor's footnotes.
 \DeclareNewFootnote{Transl}[Roman] % Our (translator's) footnotes.
 \MakePerPage{footnoteTransl}
-\newcommand{\footnoteRus}[1]{%
-	\footnoteTransl{%
-	  \begin{otherlanguage}{russian}%
-	    #1%
-	  \end{otherlanguage}%
-	}}
+
+% Footnotes with original Russian phrases (e.g., which don't have a direct
+% English language equivallent).
+\DeclareNewFootnote{Rus}[roman]
+\MakePerPage{footnoteRus}
+%\newcommand{\footnoteRus}[1]{%
+%	\footnoteTransl{%
+%	  \begin{otherlanguage}{russian}%
+%	    #1%
+%	  \end{otherlanguage}%
+%	}}
 
 % Use when running pdflatex to generate the font cache, instead of the above
 % (when avoiding running out ouf TeX counters by disabling <bigfoot>):

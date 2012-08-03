@@ -47,12 +47,13 @@
    \iffieldundef{booktitle}{%
      %\printfield[citetitle]{title}%
      \printtitlefield{title}%
+     \printfield[titletrans]{userb}%
    }{%
      %\printfield[citetitle]{booktitle}%
      \printtitlefield{booktitle}%
+     \printfield[titletrans]{usera}%
    }%
-   \printfield[titletrans]{usera}}%
-  }
+  }}
   {\multicitedelim}
   {\usebibmacro{postnote}}
 
