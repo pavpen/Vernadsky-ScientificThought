@@ -8,7 +8,10 @@
 \usepackage[utf8]{luainputenc}
 \usepackage{csquotes}
 \usepackage[russian,french,german,english]{babel}
+\usepackage{footmisc}
 \usepackage{bigfoot} % install {ncctools} and {bigfoot}
+\usepackage{color}
+%\usepackage[usenames,dvipsnames,svgnames]{xcolor}
 
 % Font configuration:
 %\usepackage[sc]{mathpazo}
@@ -42,6 +45,12 @@
 
 
 %%
+% Colors:
+\definecolor{deemphGray}{rgb}{0.65,0.65,0.65}
+
+
+
+%%
 % Typesetting macros:
 
 % Typeset 'e.g.':
@@ -56,6 +65,13 @@
 
 % Typeset (e.g.) Latin phrases:
 \newcommand{\lphr}[1]{\textsf{\emph{#1}}}
+
+% Typeset text insertions, included for changing to an, e.g., more familiar
+% style:
+%  This is pretty ugly (or ugly pretty):
+% \font\lightrm = cmr20 at 10pt
+%\newcommand{\altStylePhr}[1]{{[\lightrm #1]}}
+\newcommand{\altStylePhr}[1]{\textcolor{deemphGray}{[#1]}}
 
 % Typeset chapters with by-line-type subtitles:
 \newcommand{\ChapterByLine}[2]{\chapter[#1]{#1\\[1ex]\sc\large #2}}
@@ -100,7 +116,8 @@
 \newcommand{\fncomma}{${\rule{-1pt}{0pt}}^{, }$}
 \DeclareNewFootnote{default} % Author's footnotes.
 \DeclareNewFootnote{Ed}[fnsymbol] % The editor's footnotes.
-%\MakePerPage{footnoteEd}
+%\DeclareNewFootnote{Ed}[greek] % The editor's footnotes.
+\MakePerPage{footnoteEd}
 \DeclareNewFootnote{Transl}[Roman] % Our (translator's) footnotes.
 \MakePerPage{footnoteTransl}
 
