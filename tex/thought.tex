@@ -8,6 +8,8 @@
 \usepackage[utf8]{luainputenc}
 \usepackage{csquotes}
 \usepackage[russian,french,german,english]{babel}
+%\usepackage{balance} % Misplaces footnotes when balancing the columns.
+%\usepackage{flushend} % Useless for our purpose.
 \usepackage{footmisc}
 \usepackage{bigfoot} % install {ncctools} and {bigfoot}
 \usepackage{color}
@@ -60,6 +62,15 @@
 % Typeset 'i.e.':
 \newcommand{\ie}{i.$\,$e.}
 \newcommand{\Ie}{I.$\,$e.}
+
+% Typeset ---Ed., ---Pav, etc.:
+\newcommand{\noteAuth}[1]{\textit{\mbox{---#1}}}
+
+% Typeset [---Ed.], [---Pav], etc.:
+\newcommand{\parenNoteAuth}[1]{\mbox{[\textit{---#1}]}}
+
+% Typeset [Ed.:], [Pav:], etc.:
+\newcommand{\parenNoteAuthPfx}[1]{\mbox{[\textit{#1:}]}}
 
 % Typeset titles of works:
 \newcommand{\rtitle}[1]{\emph{#1}}
@@ -139,6 +150,16 @@
 %\newcommand{\footnoteTransl}[1]{\footnote{#1}}
 %\newcommand{\footnotemarkTransl}{\footnotemark}
 %\newcommand{\footnotetextTransl}{\footnotetext}
+
+
+%%
+% Widow, orphan, etc. control:
+\clubpenalty=10000
+\widowpenalty=10000
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=1602
 
 
 
