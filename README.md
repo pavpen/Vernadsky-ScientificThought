@@ -109,12 +109,12 @@ while running `make` in the `tex` directory:
 ###Explanation:
 
 The input file uses UTF-8 to include the various languages in the document
-(English, Russian, occasionally, French and German).  Also, all the LaTeX
-packages, and the macros used in the document use up all the TeX counters, and
-cause an overflow.  These conditions presently require the use of `lualatex` to
-compile the document.
+(English, Russian, occasionally, French and German).  Also, the LaTeX packages,
+and the macros used in the document use up all the TeX counters, and cause an
+overflow.  These conditions presently require the use of LuaLaTex to compile
+the document.
 
-Unfortunately, the way lualatex comes in my Gentoo texlive installation it
+Unfortunately, the way `lualatex` comes in my Gentoo TeX Live installation it
 doesn't compile fonts, and generate metric data.  The usual `latex` does that
 properly, but I can't run, because of the above considerations.
 
