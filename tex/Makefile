@@ -2,6 +2,7 @@ NAME = thought
 
 # LATEXMK_OPTS = -pdf
 LATEXMK_OPTS = -pdf -pdflatex=lualatex
+LATEXMK_OPTS_BUILD_FONTCACHE = -pdf -pdflatex='pdflatex -interaction=batchmode'
 
 all: $(NAME).pdf
 
@@ -10,6 +11,9 @@ re: clean
 
 $(NAME).pdf: *.tex bib/*.bib *.cbx
 	latexmk $(LATEXMK_OPTS) $(NAME)
+
+fontcache: *.tex bib/*.bib *.cbx
+	latexmk $(LATEXMK_OPTS_BUILD_FONTCACHE) $(NAME)
 
 clean:
 	rm -f $(NAME).blg $(NAME).bbl $(NAME).out $(NAME).bcf $(NAME).toc \
