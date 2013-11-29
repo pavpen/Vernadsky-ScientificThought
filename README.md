@@ -16,9 +16,9 @@ If you see a “metric data not found or bad” error, e.g.:
 	? 
 
 
-while running `make` in the <tex> directory:
+while running `make` in the `tex` directory:
 
-1. Open <thought.tex>
+1. Open `thought.tex`
 
 2. Comment out the `\usepackage{bigfoot}` line:
 
@@ -65,7 +65,7 @@ while running `make` in the <tex> directory:
 
 4. Run `make fontcache`
 
-5. Restore <thought.tex> to its initial state (i.e., reverse steps 2 and 3):
+5. Restore `thought.tex` to its initial state (i.e., reverse steps 2 and 3):
 
 ```latex
 \usepackage{bigfoot} % install {ncctools} and {bigfoot}
