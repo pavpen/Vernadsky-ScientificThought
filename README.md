@@ -18,17 +18,15 @@ If you see a “metric data not found or bad” error, e.g.:
 
 while running `make` in the `tex` directory:
 
-1. Open `thought.tex`
+*1.* Open `thought.tex`
 
-2. Comment out the `\usepackage{bigfoot}` line:
+*2.* Comment out the `\usepackage{bigfoot}` line:
 
 ```latex
 %\usepackage{bigfoot} % install {ncctools} and {bigfoot}
 ```
 
-3. Comment out the various `\DeclareNewFootnote` commands, and uncomment the
-   corresponding `\newcommand` commands which provide replacements for these
-   footnote commands:
+*3.* Comment out the various `\DeclareNewFootnote` commands, and uncomment the corresponding `\newcommand` commands which provide replacements for these footnote commands:
 
 ```latex
 %%
@@ -63,9 +61,10 @@ while running `make` in the `tex` directory:
 \newcommand{\footnotetextTransl}{\footnotetext}
 ```
 
-4. Run `make fontcache`
+*4.* Run `make fontcache`
 
-5. Restore `thought.tex` to its initial state (i.e., reverse steps 2 and 3):
+*5.* Restore `thought.tex` to its initial state (i.e., reverse steps 2 and 3):
+
 
 ```latex
 \usepackage{bigfoot} % install {ncctools} and {bigfoot}
@@ -104,13 +103,13 @@ while running `make` in the `tex` directory:
 %\newcommand{\footnotetextTransl}{\footnotetext}
 ```
 
-6. Now you `make` should succeed.
+*6.* Now your `make` should succeed.
 
 
 ###Explanation:
 
 The input file uses UTF-8 to include the various languages in the document
-(English, Russia, occasionally, French and German).  Also, all the LaTeX
+(English, Russian, occasionally, French and German).  Also, all the LaTeX
 packages, and the macros used in the document use up all the TeX counters, and
 cause an overflow.  These conditions presently require the use of `lualatex` to
 compile the document.
