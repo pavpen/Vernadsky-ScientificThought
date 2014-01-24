@@ -1,0 +1,10 @@
+*.aux
+thought.bbl
+thought.bcf
+thought.blg
+thought.fdb_latexmk
+thought.fls
+thought.log
+thought.out
+thought.run.xml
+thought.toc
