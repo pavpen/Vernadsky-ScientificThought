@@ -1,6 +1,9 @@
 A Translation of Vernadsky's _Scientific Thought as a Planetary Phenomenon_ into English
 ======================================================================================
 
+This translation is made from the Russian published at
+[http://vernadsky.lib.ru/e-texts/archive/thought.html](http://vernadsky.lib.ru/e-texts/archive/thought.html).
+
 
 Known Trouble
 -------------
@@ -125,4 +128,4 @@ required compiled fonts and their matadata.  After this has been accomplished,
 
 
 
-(C) 2012–2013 Pavel M. Penev
+(C) 2012–2014 Pavel M. Penev
