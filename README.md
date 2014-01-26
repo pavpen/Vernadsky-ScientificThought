@@ -5,6 +5,20 @@ This translation is made from the Russian published at
 [http://vernadsky.lib.ru/e-texts/archive/thought.html](http://vernadsky.lib.ru/e-texts/archive/thought.html).
 
 
+LaTeX Packages Needed for Compilation
+-------------------------------------
+
+If you are using a packaged texlive distribution, you'll need to install, at
+least
+
+* texlive-bibtexextra
+* texlive-langcyrillic
+* texlive-luatex
+
+You'll also need to have [biber](http://biblatex-biber.sourceforge.net/)
+installed.
+
+
 Known Trouble
 -------------
 
