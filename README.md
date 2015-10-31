@@ -78,7 +78,7 @@ while running `make` in the `tex` directory:
 \newcommand{\footnotetextTransl}{\footnotetext}
 ```
 
-*4.* Run `make fontcache`
+*4.* Run `make clean && make fontcache`
 
 *5.* Restore `thought.tex` to its initial state (i.e., reverse steps 2 and 3):
 
