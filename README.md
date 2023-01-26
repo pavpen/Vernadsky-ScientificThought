@@ -1,8 +1,10 @@
 A Translation of Vernadsky's _Scientific Thought as a Planetary Phenomenon_ into English
-======================================================================================
+========================================================================================
 
 This translation is made from the Russian published at
 [http://vernadsky.lib.ru/e-texts/archive/thought.html](http://vernadsky.lib.ru/e-texts/archive/thought.html).
+
+Current PDF of the translation: [tex/thought.pdf](tex/thought.pdf).
 
 
 LaTeX Packages Needed for Compilation
