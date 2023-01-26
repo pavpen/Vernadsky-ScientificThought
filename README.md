@@ -123,23 +123,24 @@ while running `make` in the `tex` directory:
 *6.* Now your `make` should succeed.
 
 
-###Explanation:
+### Explanation:
 
 The input file uses UTF-8 to include the various languages in the document
-(English, Russian, occasionally, French and German).  Also, the LaTeX packages,
+(English, Russian, occasionally, French and German).  The LaTeX packages,
 and the macros used in the document use up all the TeX counters, and cause an
 overflow.  These conditions presently require the use of LuaLaTex to compile
 the document.
 
 Unfortunately, the way `lualatex` comes in my Gentoo TeX Live installation it
 doesn't compile fonts, and generate metric data.  The usual `latex` does that
-properly, but I can't run, because of the above considerations.
+properly, but it can't run, because of the above considerations.
 
-Steps 1–3 make LaTeX run (if input encoding errors are ignored) by using
-temporary replacement macros.  This fills the LaTeX font cache with the
-required compiled fonts and their matadata.  After this has been accomplished,
-`lualatex` can, finally, use the font chache to compile the disired output PDF.
+Steps 1–3 make LaTeX run (although with some input encoding errors) by
+temporarily replacing the macros that lead to counter overflow.  This run
+fills the LaTeX font cache with the required compiled fonts and their matadata.
+After this has been accomplished, `lualatex` can, finally, use the font chache
+to compile the disired output PDF.
 
 
 
-(C) 2012–2015 Pavel M. Penev
+(C) 2012–2015, 2023 Pavel M. Penev
